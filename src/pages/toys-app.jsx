@@ -9,11 +9,16 @@ class _ToyApp extends Component {
 
   state = {
     toysForDisplay: null,
-    labels: ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle", "Outdoor", "Battery Powered"]
-  }
+    labels: ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle", "Outdoor", "Battery Powered"],
+    filterBy: {
+      txt: '',
+      labels: [],
+      inStock: 'all'
+    }
 
+  }
   componentDidMount() {
-    this.props.loadToys()
+    this.props.loadToys(this.state.filterBy)
   }
 
   onRemoveToy = (toyId) => {
@@ -21,7 +26,7 @@ class _ToyApp extends Component {
   }
 
   resetFilters = () => {
-    this.setState({toysForDisplay:null})
+    this.setState({ toysForDisplay: null })
   }
 
   onAddToy = () => {
@@ -37,46 +42,59 @@ class _ToyApp extends Component {
   }
 
   onSelect = (selectedList) => {
-    const toysForDisplay = this.props.toys.filter(toy => {
-      const found = toy.labels.some(label => selectedList.indexOf(label) >= 0)
-      if (found) return toy
-    })
-    this.setState({ toysForDisplay })
+    this.setState({ filterBy: { ...this.state.filterBy, labels: selectedList } })
   }
 
   search = (searchTerm) => {
-    const toysToSearch = this.state.toysForDisplay ? this.state.toysForDisplay :
-      this.props.toys
-    const toysForDisplay = toysToSearch.filter(toy => {
-      const found = toy.name.includes(searchTerm)
-      if (found) return toy
-    })
-    this.setState({ toysForDisplay })
+    this.setState({ filterBy: { ...this.state.filterBy, txt: searchTerm } })
   }
 
 
   onRemove = (selectedList) => {
-    const toysForDisplay = this.props.toys.filter(toy => {
-      const found = toy.labels.some(label => selectedList.indexOf(label) >= 0)
-      if (found) return toy
-    })
-    toysForDisplay.length ? this.setState({ toysForDisplay }) :
-      this.setState({ toysForDisplay: null })
+    this.setState({ filterBy: { ...this.state.filterBy, labels: selectedList } })
+  }
+
+  filterInStock = (val) => {
+    this.setState({ filterBy: { ...this.state.filterBy, inStock: val } })
   }
 
 
   get toysToDisplay() {
-    return this.state.toysForDisplay || this.props.toys
+    const { txt, inStock, labels } = this.state.filterBy
+    const { toys } = this.props
+    let filteredToys = toys.filter(toy => {
+      let foundByTxt
+      let foundByLabel = []
+      let foundByStock
+     
+      if (labels.length) {
+        foundByLabel = toy.labels.some(label => labels.indexOf(label) >= 0)
+      }
+      foundByTxt = toy.name.includes(txt)
+      foundByStock = inStock === 'all' ? true : toy.inStock == +inStock
+      
+      if (foundByStock){
+        if (foundByLabel) {
+          if (foundByTxt) {
+            return toy
+          }
+        }
+      }
+    })
+
+    return filteredToys
   }
 
 
   render() {
+    // console.log(this.state);
     const { labels } = this.state
     return (
       <div className="toy-app-container">
         <button onClick={this.onAddToy}>Add toy</button>
         <button>Clear filters</button>
         <ToyFilter onSelect={this.onSelect}
+          filterInStock={this.filterInStock}
           resetFilters={this.resetFilters}
           search={this.search}
           onRemove={this.onRemove}

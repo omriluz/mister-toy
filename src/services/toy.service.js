@@ -1,6 +1,6 @@
 
-import {storageService} from './async-storage.service.js'
-import {utilService} from './util.service.js'
+import { storageService } from './async-storage.service.js'
+import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'toys'
 
@@ -14,7 +14,6 @@ export const toyService = {
 
 
 function query() {
-    // return axios.get(BASE_URL).then(res => res.data)
     return storageService.query(STORAGE_KEY)
 }
 function getById(carId) {
@@ -35,9 +34,9 @@ function save(toy) {
 }
 
 // function getEmptyCar() {
-//     return { 
+//     return {
 //         vendor: 'Susita-' + (Date.now() % 1000),
-//         price: utilService.getRandomIntInclusive(1000, 9000),  
+//         price: utilService.getRandomIntInclusive(1000, 9000),
 //     }
 // }
 
@@ -46,11 +45,11 @@ function save(toy) {
 
 // storageService.post(STORAGE_KEY,{
 //     "_id": null,
-//     "name": "art puzzle",
+//     "name": "art puzzle 3",
 //     "price": 123,
 //     "labels": ["Puzzle", "Art"],
 //     "createdAt": Date.now(),
-//     "inStock": true
+//     "inStock": false
 //    }).then(x => console.log(x))
 
 

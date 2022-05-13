@@ -1,8 +1,8 @@
 import { toyService } from '../../services/toy.service.js';
 
-export function loadToys() {
+export function loadToys(filterBy) {
     return dispatch => {
-        toyService.query()
+        toyService.query(filterBy)
             .then(toys => {
                 dispatch({
                     type: 'SET_TOYS',
