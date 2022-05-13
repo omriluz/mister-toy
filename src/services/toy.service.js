@@ -46,9 +46,9 @@ function save(toy) {
 
 // storageService.post(STORAGE_KEY,{
 //     "_id": null,
-//     "name": "100 piece puzzle",
+//     "name": "art puzzle",
 //     "price": 123,
-//     "labels": ["Puzzle"],
+//     "labels": ["Puzzle", "Art"],
 //     "createdAt": Date.now(),
 //     "inStock": true
 //    }).then(x => console.log(x))

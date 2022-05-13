@@ -1,10 +1,8 @@
-import { Component } from 'react'
-//try removing component see if you need it
+import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { ToyList } from '../cmps/toy-list.jsx';
 import { ToyFilter } from '../cmps/toy-filter.jsx';
 import { loadToys, removeToy, addToy } from '../store/actions/toy.action'
-import { ToyPreview } from '../cmps/toy-preview.jsx';
 
 
 class _ToyApp extends Component {
@@ -22,6 +20,9 @@ class _ToyApp extends Component {
     this.props.removeToy(toyId)
   }
 
+  resetFilters = () => {
+    this.setState({toysForDisplay:null})
+  }
 
   onAddToy = () => {
     const toy = {
@@ -43,6 +44,16 @@ class _ToyApp extends Component {
     this.setState({ toysForDisplay })
   }
 
+  search = (searchTerm) => {
+    const toysToSearch = this.state.toysForDisplay ? this.state.toysForDisplay :
+      this.props.toys
+    const toysForDisplay = toysToSearch.filter(toy => {
+      const found = toy.name.includes(searchTerm)
+      if (found) return toy
+    })
+    this.setState({ toysForDisplay })
+  }
+
 
   onRemove = (selectedList) => {
     const toysForDisplay = this.props.toys.filter(toy => {
@@ -50,8 +61,9 @@ class _ToyApp extends Component {
       if (found) return toy
     })
     toysForDisplay.length ? this.setState({ toysForDisplay }) :
-    this.setState({ toysForDisplay:null })
+      this.setState({ toysForDisplay: null })
   }
+
 
   get toysToDisplay() {
     return this.state.toysForDisplay || this.props.toys
@@ -63,7 +75,13 @@ class _ToyApp extends Component {
     return (
       <div className="toy-app-container">
         <button onClick={this.onAddToy}>Add toy</button>
-        <ToyFilter onSelect={this.onSelect} onRemove={this.onRemove} labels={labels} onUpdateFilter={this.onUpdateFilter} />
+        <button>Clear filters</button>
+        <ToyFilter onSelect={this.onSelect}
+          resetFilters={this.resetFilters}
+          search={this.search}
+          onRemove={this.onRemove}
+          labels={labels}
+          onUpdateFilter={this.onUpdateFilter} />
         <ToyList onRemoveToy={this.onRemoveToy} toys={this.toysToDisplay} />
       </div>
     )
