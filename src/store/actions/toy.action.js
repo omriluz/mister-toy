@@ -13,48 +13,42 @@ export function loadToys() {
 }
 
 
-// export function removeTodo(todoId) {
-//     return dispatch => {
-//         todoService.remove(todoId)
-//             .then(() => {
-//                 console.log('Deleted Succesfully!');
-//                 dispatch({
-//                     type: 'REMOVE_TODO',
-//                     todoId
-//                 })
-//                 showSuccessMsg('Todo removed')
-//             })
-//             .catch(err => {
-//                 console.error('Error:', err)
-//                 showErrorMsg('Cannot remove todo')
-//             })
-//     }
-// }
+export function removeToy(toyId) {
+    return dispatch => {
+        toyService.remove(toyId)
+            .then(() => {
+                console.log('Deleted Succesfully!');
+                dispatch({
+                    type: 'REMOVE_TOY',
+                    toyId
+                })
+                // showSuccessMsg('toy removed')
+            })
+            .catch(err => {
+                console.error('Error:', err)
+                // showErrorMsg('Cannot remove toy')
+            })
+    }
+}
 
 
-// export function addTodo() {
-//     return dispatch => {
-//         const todo = {
-//             txt: prompt("new Todo?"),
-//             at: Date.now(),
-//             owner: userService.getLoggedinUser(),
-//             done: false
-//         }
-//         todoService.save(todo)
-//             .then(savedTodo => {
-//                 console.log('Added Todo', savedTodo);
-//                 dispatch({
-//                     type: 'ADD_TODO',
-//                     todo: savedTodo
-//                 })
-//                 showSuccessMsg('Todo added')
-//             })
-//             .catch(err => {
-//                 console.error('Error:', err)
-//                 showErrorMsg('Cannot add Todo')
-//             })
-//     }
-// }
+export function addToy(toy) {
+    return dispatch => {
+        toyService.save(toy)
+            .then(savedToy => {
+                console.log('Added toy', savedToy);
+                dispatch({
+                    type: 'ADD_TOY',
+                    toy: savedToy
+                })
+                // showSuccessMsg('Todo added')
+            })
+            .catch(err => {
+                console.error('Error:', err)
+                // showErrorMsg('Cannot add Todo')
+            })
+    }
+}
 
 // export function toggleDone(todo) {
 //     todo.done = !todo.done
@@ -72,7 +66,7 @@ export function loadToys() {
 
 export function save({ name, toy }) {
     return dispatch => {
-        const toyToSave = {...toy, name }
+        const toyToSave = { ...toy, name }
         return toyService.save(toyToSave)
             .then(savedToy => {
                 dispatch({

@@ -5828,6 +5828,11 @@
     "dns-packet" "^5.2.2"
     "thunky" "^1.0.2"
 
+"multiselect-react-dropdown@^2.0.22":
+  "integrity" "sha512-Oc6Y/Rl1U3XSyp2Hb5utTvqtHeFTMJf5+PHrmxvk06yT02KLivqXUhmqsmDnLfMZm3UC6Hnh4NnpoNxj/z+5gg=="
+  "resolved" "https://registry.npmjs.org/multiselect-react-dropdown/-/multiselect-react-dropdown-2.0.22.tgz"
+  "version" "2.0.22"
+
 "nanoid@^3.3.3":
   "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.3.4.tgz"
   "version" "3.3.4"
@@ -7007,7 +7012,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.1.0", "react@>= 16", "react@>=15", "react@>=16.6.0":
+"react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.7.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.1.0", "react@>= 16", "react@>=15", "react@>=16.6.0":
   "resolved" "https://registry.npmjs.org/react/-/react-18.1.0.tgz"
   "version" "18.1.0"
   dependencies:

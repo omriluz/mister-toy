@@ -9,7 +9,7 @@ export const toyService = {
     getById,
     save,
     remove,
-    getEmptyCar
+    // getEmptyCar
 }
 
 
@@ -20,9 +20,9 @@ function query() {
 function getById(carId) {
     return storageService.get(STORAGE_KEY, carId)
 }
-function remove(carId) {
+function remove(toyId) {
     // return Promise.reject('Not now!')
-    return storageService.remove(STORAGE_KEY, carId)
+    return storageService.remove(STORAGE_KEY, toyId)
 }
 function save(toy) {
     if (toy._id) {
@@ -34,21 +34,21 @@ function save(toy) {
     }
 }
 
-function getEmptyCar() {
-    return { 
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),  
-    }
-}
+// function getEmptyCar() {
+//     return { 
+//         vendor: 'Susita-' + (Date.now() % 1000),
+//         price: utilService.getRandomIntInclusive(1000, 9000),  
+//     }
+// }
 
 
 // TEST DATA
 
 // storageService.post(STORAGE_KEY,{
 //     "_id": null,
-//     "name": "bratz doll",
+//     "name": "100 piece puzzle",
 //     "price": 123,
-//     "labels": ["Doll", "Battery Powered", "Baby"],
+//     "labels": ["Puzzle"],
 //     "createdAt": Date.now(),
 //     "inStock": true
 //    }).then(x => console.log(x))
