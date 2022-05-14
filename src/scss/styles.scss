@@ -1,0 +1,27 @@
+@import './setup/vars';
+
+@import './cmps/app-header';
+@import './cmps/toy-filter';
+@import './cmps/toy-list';
+@import './cmps/toy-preview';
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: $clr3;
+}
+
+
+button {
+    background-color: $clr2;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: background-color 150ms ease-in-out;
+    &:hover {
+        background-color: $clr3;
+    }
+}

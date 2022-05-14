@@ -1,4 +1,3 @@
-import { Route } from "react-router-dom";
 import { ToyApp } from "./pages/toys-app";
 import { Home } from "./pages/home-page";
 import { About } from "./pages/about-page";
@@ -15,10 +14,11 @@ export default [{
     path: '/toys',
     component: ToyApp
 },
- {
+{
     path: '/toys/edit/:toyId',
     component: ToyEdit,
-}, 
-{    path: '/toys/:toyId',
-    component: ToyDetails}
-]
+},
+{
+    path: '/toys/:toyId',
+    component: ToyDetails
+}]

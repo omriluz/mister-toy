@@ -26,7 +26,13 @@ class _ToyApp extends Component {
   }
 
   resetFilters = () => {
-    this.setState({ toysForDisplay: null })
+    this.setState({
+      filterBy: {
+        txt: '',
+        labels: [],
+        inStock: 'all'
+      }
+    })
   }
 
   onAddToy = () => {
@@ -66,14 +72,14 @@ class _ToyApp extends Component {
       let foundByTxt
       let foundByLabel = []
       let foundByStock
-     
+
       if (labels.length) {
         foundByLabel = toy.labels.some(label => labels.indexOf(label) >= 0)
       }
       foundByTxt = toy.name.includes(txt)
       foundByStock = inStock === 'all' ? true : toy.inStock == +inStock
-      
-      if (foundByStock){
+
+      if (foundByStock) {
         if (foundByLabel) {
           if (foundByTxt) {
             return toy
@@ -87,12 +93,11 @@ class _ToyApp extends Component {
 
 
   render() {
-    // console.log(this.state);
+    console.log(this.state);
     const { labels } = this.state
     return (
       <div className="toy-app-container">
         <button onClick={this.onAddToy}>Add toy</button>
-        <button>Clear filters</button>
         <ToyFilter onSelect={this.onSelect}
           filterInStock={this.filterInStock}
           resetFilters={this.resetFilters}

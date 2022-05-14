@@ -1,0 +1,48 @@
+.toy-preview {
+    transition: all 250ms ease-in-out;
+    background-color: $clr1;
+    border-radius: 10px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+
+    // white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .toy-price::before {
+    content: '₪ ';
+    }
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.edit-btn::before {
+    content: '\f044 ';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.details-btn::before {
+    content: '\f05a ';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.delete-btn::before {
+    content: '\f2ed ';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.toy-preview-title::first-letter {
+    text-transform: uppercase;
+}

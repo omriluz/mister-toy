@@ -43,6 +43,7 @@ export class ToyFilter extends Component {
                     isObject={false}
                     style={{
                         multiselectContainer: {
+                            backgroundColor:'white',
                             width: '100%',
                             display: 'inline-block'
                         }
@@ -52,7 +53,7 @@ export class ToyFilter extends Component {
                     <option value="1">in stock</option>
                     <option value="0">out of stock</option>
                 </select>
-            <button onClick={() => this.onResetFilters()}>clear</button>
+            <button onClick={() => this.onResetFilters()}>Clear Filters</button>
         </section>
     }
 }

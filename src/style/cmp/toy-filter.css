@@ -1,9 +1,0 @@
-.toy-filter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.toy-filter>* {
-    margin-right: 25px;
-}

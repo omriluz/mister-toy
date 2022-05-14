@@ -1,0 +1,51 @@
+.app-header {
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+    width: 100%;
+    background-color: $clr1;
+    border: solid 1px black
+}
+
+.navbar {
+    //todo align navbar inside header also after this bullshit youre doing
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+    list-style: none;
+
+    li {
+        padding-top: 10px;
+        position: relative;
+
+        a {
+            color: $clr2;
+            text-decoration: none;
+            transition: color ease-in-out 220ms;
+            
+            &:hover {
+                color: $clr3;
+            }
+
+            &:hover::before {
+                width: 100%;
+                background-color: $clr3;
+                
+            }
+
+            &::before {
+                content: '';
+                display: block;
+                height: 5px;
+                background-color: $clr2;
+                position: absolute;
+
+                top: 0;
+                width: 0%;
+                transition: width ease-in-out 220ms, background-color ease-in-out 220ms;
+            }
+        }
+    }
+}
